@@ -16,26 +16,26 @@
         <h2 class="pharse">친구들의 사진과 동영상을 보려면 가입하세요.</h2>
         <button class="facebook-login-button" title="login">Facebook으로 로그인</button>
         <!--/*@thymesVar id="user" type=""*/-->
-        <form class="login-form" th:action="@{/signup}" method="post" th:object="${user}">
+        <form class="login-form" th:action="@{/signup}" method="post" th:object="${userDTO}">
             <div class="separator">
                 <div class="line"></div>
                 <p>또는</p>
                 <div class="line"></div>
             </div>
             <div class="field">
-                <input id="email" type="email" placeholder="Phone number or email" th:field="*{email}"/>
-                <label for="email">휴대폰 번호 또는 이메일 주소</label>
+                <input id="email" type="email" name="email" placeholder="Phone number or email" th:value="*{email}"/>
+                <label for="email">이메일 주소</label>
             </div>
             <div class="field">
-                <input id="name" type="text" placeholder="name" th:field="*{username}"/>
+                <input id="name" type="text" name="username" placeholder="name" th:value="*{username}"/>
                 <label for="name">성명</label>
             </div>
             <div class="field">
-                <input id="username" type="text" placeholder="username" th:field="*{nickname}"/>
+                <input id="username" type="text" name="nickname" placeholder="username" th:value="*{nickname}"/>
                 <label for="username">사용자이름</label>
             </div>
             <div class="field">
-                <input id="password" type="password" placeholder="password" th:field="*{password}"/>
+                <input id="password" type="password" name="password" placeholder="password" th:value="*{password}"/>
                 <label for="password">비밀번호</label>
             </div>
             <button type="submit" class="btn btn-success">가입</button>
