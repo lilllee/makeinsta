@@ -4,6 +4,7 @@ package com.example.makeinsta.controller;
 import com.example.makeinsta.dto.UserRegistrationDto;
 import com.example.makeinsta.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,12 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserSignupController {
 
     @Autowired
-    private final UserService userService;
-
-    public UserSignupController(UserService userService) {
-        this.userService = userService;
-    }
-
+    private UserService userService;
 
     @GetMapping
     public String signupForm(@ModelAttribute UserRegistrationDto userRegistrationDto, Model model) {
@@ -31,11 +27,13 @@ public class UserSignupController {
     }
 
     @PostMapping
-    public String save(UserRegistrationDto userRegistrationDto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "signup";
+    public String save(UserRegistrationDto userRegistrationDto) {
+        if (userService.회원가입(userRegistrationDto)) {
+            System.out.println("성공적으로 회원가입");
+            return "redirect:/login";
+        } else {
+            System.out.println("회원가입 실패");
+            return "redirect:/signup?error";
         }
-        userService.회원가입(userRegistrationDto);
-        return "redirect:/login";
     }
 }

@@ -40,10 +40,10 @@
             </div>
             <button type="submit" class="btn btn-success">가입</button>
         </form>
-
+        <span class="email_input_check" th:if="${param.error}" > 이메일 계정이 이미 존재합니다. </span>
     </div>
     <div class="box">
-        <p>계정이 있으신가요? <a class="signup" href="/" th:href="@{/login}">로그인</a></p>
+        <p>계정이 있으신가요? <a class="signup" href="/" th:href="@{/login}"`>로그인</a></p>
     </div>
 </div>
 </body>

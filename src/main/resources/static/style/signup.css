@@ -37,7 +37,7 @@ a {
 }
 
 .pharse {
-    color : gray;
+    color: gray;
     font-size: 17px;
     font-weight: 600;
     line-height: 20px;
@@ -88,11 +88,16 @@ label {
     padding-top: 6px;
 }
 
+.email_input_check {
+    color: red;
+}
+
 /* hiding placeholder in all browsers */
 
 input::placeholder {
     visibility: hidden;
 }
+
 /* hiding  placeholder in mozilla */
 .login-form ::-moz-placeholder {
     color: transparent;
